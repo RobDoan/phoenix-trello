@@ -6,7 +6,7 @@ defmodule PhoenixTrello.SessionController do
   def create(conn, %{"session" => session_params}) do
     case PhoenixTrello.Session.authenticate(session_params) do
       {:ok, user} ->
-        {:ok, jwt, _full_claims} = user |> Guardian.encode_and_sign(:token)
+        jwt = user |> PhoenixTrello.User.generate_token
 
         conn
         |> put_status(:created)
@@ -18,5 +18,5 @@ defmodule PhoenixTrello.SessionController do
         |> render("error.json")
     end
   end
-  
+
 end

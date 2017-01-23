@@ -30863,7 +30863,7 @@
 	function buildHeaders() {
 	  var authToken = localStorage.getItem('phoenixAuthToken');
 
-	  return _extends({}, defaultHeaders, { Authorization: authToken });
+	  return _extends({}, defaultHeaders, { Authorization: 'Bearer ' + authToken });
 	}
 
 	function checkStatus(response) {

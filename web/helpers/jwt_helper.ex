@@ -1,10 +1,9 @@
 defmodule PhoenixTrello.JWTHelper do
-  import Joken, except: [verify: 1]
-
+  import Joken, except: [verify: 1]  
   @doc """
    user for future verification, eg. on socket connect
   """
-  def verify(jwt) do
+  def verify(_jwt) do
     verify
   end
 

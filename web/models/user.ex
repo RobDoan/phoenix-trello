@@ -34,7 +34,7 @@ defmodule PhoenixTrello.User do
 
   def generate_token(%PhoenixTrello.User{} = user) do
     alias Joken, as: J
-    %J.Token{claims: %{id: user.id}}
+    %J.Token{claims: %{id: user.id, email: user.email}}
     |> J.with_json_module(Poison)
     |> J.with_signer(J.hs256(Application.get_env(:phoenix_trello, :auth0)[:app_secret]))
     |> J.with_aud(Application.get_env(:phoenix_trello, :auth0)[:app_id])

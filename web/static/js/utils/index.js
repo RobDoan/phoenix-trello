@@ -10,7 +10,7 @@ const defaultHeaders = {
 function buildHeaders() {
   const authToken = localStorage.getItem('phoenixAuthToken');
 
-  return { ...defaultHeaders, Authorization: authToken };
+  return { ...defaultHeaders, Authorization: `Bearer ${authToken}` };
 }
 
 export function checkStatus(response) {
