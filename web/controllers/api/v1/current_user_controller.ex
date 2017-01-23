@@ -5,7 +5,6 @@ defmodule PhoenixTrello.CurrentUserController do
 
   def show(conn, _) do
     user = Map.get(conn.assigns, :current_user)
-    Logger.debug("This is user email: #{user.email}")
     conn
     |> put_status(:ok)
     |> render("show.json", user: user)

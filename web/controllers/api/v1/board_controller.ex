@@ -7,7 +7,7 @@ defmodule PhoenixTrello.BoardController do
   alias PhoenixTrello.{Repo, Board, UserBoard}
 
   def index(conn, _params) do
-    current_user = Guardian.Plug.current_resource(conn)
+    current_user = PhoenixTrello.Session.current_user(conn)
 
     owned_boards = current_user
       |> assoc(:owned_boards)
@@ -24,7 +24,7 @@ defmodule PhoenixTrello.BoardController do
   end
 
   def create(conn, %{"board" => board_params}) do
-    current_user = Guardian.Plug.current_resource(conn)
+    current_user = PhoenixTrello.Session.current_user(conn)
 
     changeset = current_user
       |> build_assoc(:owned_boards)
