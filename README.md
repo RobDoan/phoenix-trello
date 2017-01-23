@@ -1,3 +1,9 @@
+Study Phoenix by cloning Trello.
+
+Copy  from [diacode](https://blog.diacode.com/trello-clone-with-phoenix-and-react-pt-5)
+
+
+
 # PhoenixTrello
 
 To start your Phoenix app:
