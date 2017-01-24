@@ -3,8 +3,11 @@ defmodule PhoenixTrello.JWTHelper do
   @doc """
    user for future verification, eg. on socket connect
   """
-  def verify(_jwt) do
-    verify
+  @spec verify(Joken.Token.t) :: Joken.Token.t
+  def verify(jwt) do
+    verify()
+    |> with_compact_token(jwt)
+    |> Joken.verify
   end
 
   @doc """
@@ -12,7 +15,7 @@ defmodule PhoenixTrello.JWTHelper do
    issuer should be our autho domain
    app_metadata must be present in id_token
   """
-
+  @spec verify() :: Joken.Token.t
   def verify do
     %Joken.Token{}
     |> with_json_module(Poison)
